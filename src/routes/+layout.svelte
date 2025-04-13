@@ -13,5 +13,8 @@
     class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase"
     href="temperatureConverter">Temperature</a
   >
+  <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="flightbooker"
+    >flight</a
+  >
 </nav>
 {@render children()}
