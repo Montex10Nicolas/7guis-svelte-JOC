@@ -18,5 +18,8 @@
   >
   <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="timer">timer</a>
   <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="crud">crud</a>
+  <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="circledrawer"
+    >Circle Drawer</a
+  >
 </nav>
 {@render children()}
