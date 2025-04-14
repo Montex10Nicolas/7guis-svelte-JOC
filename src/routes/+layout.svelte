@@ -16,5 +16,6 @@
   <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="flightbooker"
     >flight</a
   >
+  <a class="border-pinky rounded-sm border bg-cyan-400 px-4 py-2 uppercase" href="timer">timer</a>
 </nav>
 {@render children()}
