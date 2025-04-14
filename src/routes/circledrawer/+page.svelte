@@ -12,6 +12,9 @@
   let radius = $state(10);
   let selected = $state<Circle>();
 
+  let snapshots: Circle[][] = $state([]);
+  let history = $state(-1);
+
   function drawCircle(event: MouseEvent) {
     if (status === "editing") return;
     const svgEl = event.target as SVGElement;
@@ -26,6 +29,7 @@
       cy: y,
       r: radius,
     });
+    snapshot();
   }
 
   function choseSelected(event: MouseEvent) {
@@ -57,8 +61,30 @@
     }
     selected = tempCircle;
   }
+
+  function undo() {
+    if (history === 0) {
+      circles = [];
+      return;
+    }
+    circles = snapshots[--history];
+  }
+
+  function redo() {
+    if (snapshots.length < history + 1) return;
+    circles = snapshots[history++];
+  }
+
+  function snapshot() {
+    history++;
+    snapshots.push($state.snapshot(circles));
+  }
 </script>
 
+<div class="my-2 flex justify-center gap-6">
+  <button class="cursor-pointer rounded-sm border border-black px-3" onclick={undo}>Undo</button>
+  <button class="cursor-pointer rounded-sm border border-black px-3" onclick={redo}>Redo</button>
+</div>
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <svg
@@ -96,6 +122,7 @@
         if (!selected) return;
         selected.r = radius;
       }}
+      onchange={snapshot}
     />
   </div>
 {/if}
